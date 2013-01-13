@@ -3,15 +3,27 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Primes {
-	public List<Integer> calculateOrderedPrimesUpTo(int primesTo) {
-		return extendOrderedPrimeList(new ArrayList<Integer>(), 2, primesTo);
+
+	private List<Integer> currentPrimes;
+	private int currentMax;
+
+	public Primes() {
+		currentPrimes = new ArrayList<Integer>();
+		currentMax = 1;
 	}
 
-	public List<Integer> extendOrderedPrimeList(List<Integer> orderedPrimes, int startAt, int primesUpTo) {
+	public List<Integer> calculateOrderedPrimesUpTo(int primesTo) {
+		extendOrderedPrimeList(primesTo);
+		currentMax = primesTo;
+		return currentPrimes;
+	}
+
+	private List<Integer> extendOrderedPrimeList(int primesUpTo) {
+		int startAt = currentMax + 1;
 		int valuesBetweenStartAndEnd = 1 + primesUpTo - startAt;
 		boolean[] toIncludesAsPrime = booleanArray(valuesBetweenStartAndEnd);
 
-		for (int existingPrime : orderedPrimes) {
+		for (int existingPrime : currentPrimes) {
 			if (existingPrime > Math.sqrt(primesUpTo)) {
 				break;
 			}
@@ -20,11 +32,11 @@ public class Primes {
 			}
 		}
 
-		for (int currentValue = startAt; currentValue <= primesUpTo; currentValue++) {			
+		for (int currentValue = startAt; currentValue <= primesUpTo; currentValue++) {
 			if (currentValue > Math.sqrt(primesUpTo)) {
 				break;
 			}
-			if (toIncludesAsPrime[currentValue - startAt]) {				
+			if (toIncludesAsPrime[currentValue - startAt]) {
 				for (int valueToEliminate = currentValue * currentValue; valueToEliminate <= primesUpTo; valueToEliminate = valueToEliminate + currentValue) {
 					toIncludesAsPrime[valueToEliminate - startAt] = false;
 				}
@@ -32,12 +44,12 @@ public class Primes {
 
 		}
 
-		orderedPrimes.addAll(convertToInOrderIncludeValuesWithOffset(toIncludesAsPrime, startAt));
-		return orderedPrimes;
+		currentPrimes.addAll(convertToInOrderIncludeValuesWithOffset(toIncludesAsPrime, startAt));
+		return currentPrimes;
 	}
 
 	private int calculateFirstValueToRemoveGreaterThan(int prime, int minimum) {
-		return prime * prime + ((int) Math.ceil(minimum/ ((double) prime)) - prime) * prime;
+		return prime * prime + ((int) Math.ceil(minimum / ((double) prime)) - prime) * prime;
 	}
 
 	private List<Integer> convertToInOrderIncludeValuesWithOffset(boolean[] inclusionIndicator, int offset) {

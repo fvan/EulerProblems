@@ -11,7 +11,7 @@ public class Solution7 {
 		int primesUpTo = nthPrime;
 		List<Integer> currentPrimes = primes.calculateOrderedPrimesUpTo(primesUpTo);
 		while (currentPrimes.size() < nthPrime) {
-			primes.extendOrderedPrimeList(currentPrimes, primesUpTo, primesUpTo * 2);
+			primes.calculateOrderedPrimesUpTo(primesUpTo * 2);
 			primesUpTo = primesUpTo * 2;
 		}
 		
