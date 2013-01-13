@@ -17,6 +17,7 @@ public class Solution1 {
 
 	public static void main(String... args) {
 		System.out.println(new Solution1().calculateSumOfMultiplesOf3and5before(1000));
+		System.out.println("expected Answer: 233168");
 	}
 
 	@Test 

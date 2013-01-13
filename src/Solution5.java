@@ -10,6 +10,7 @@ public class Solution5 {
 
 	public static void main(String... args) {
 		System.out.println(new Solution5().calculateLargestValueDivisibleByAllUpTo(20));
+		System.out.println("expected Answer: 232792560");
 	}
 
 	private int calculateLargestValueDivisibleByAllUpTo(int largestDivisor) {

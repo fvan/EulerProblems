@@ -7,9 +7,8 @@ import org.junit.Test;
 
 public class Solution3 {
 	public static void main(String... args) {
-		long initialMillis = System.currentTimeMillis();
 		System.out.println(new Solution3().determineLargestPrimeFactor(600851475143L));
-		System.out.println((System.currentTimeMillis() - initialMillis) /1000);
+		System.out.println("expected Answer: 6857");
 	}
 
 	private long determineLargestPrimeFactor(long number) {

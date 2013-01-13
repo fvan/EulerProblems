@@ -6,13 +6,14 @@ import org.junit.Test;
 public class Solution2 {
 	public static void main(String... args) {
 		System.out.println(new Solution2().calculateSumOfEvenFibonachiUpTo(4000000));
+		System.out.println("expected Answer: 4613732");
 	}
 
 	public int calculateSumOfEvenFibonachiUpTo(int smallerThan) {
-
 		int sumOfEven = 0;
 		int valueBefore = 1;
 		int nextValue = 2;
+		
 		while (nextValue < smallerThan) {
 			if (nextValue % 2 == 0) {
 				sumOfEven += nextValue;

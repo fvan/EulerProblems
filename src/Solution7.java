@@ -20,6 +20,7 @@ public class Solution7 {
 	
 	public static void main(String ... args) {
 		System.out.println(new Solution7().determineNthPrime(10001));
+		System.out.println("expected Answer: 104743");
 	}
 	
 	@Test
