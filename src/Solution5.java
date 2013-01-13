@@ -2,6 +2,7 @@ import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.Test;
 
@@ -12,8 +13,8 @@ public class Solution5 {
 	}
 
 	private int calculateLargestValueDivisibleByAllUpTo(int largestDivisor) {
-		ArrayList<Integer> valuesNeededToFormProduct = new ArrayList<Integer>();
-		ArrayList<Integer> usedPrimes = new Primes().calculatePrimesUpToWithout1(largestDivisor);
+		List<Integer> valuesNeededToFormProduct = new ArrayList<Integer>();
+		List<Integer> usedPrimes = new Primes().calculatePrimesUpTo(largestDivisor);
 		
 		for (int prime : usedPrimes) {
 			int primeToAPower = prime;
@@ -26,7 +27,7 @@ public class Solution5 {
 		return productOf(valuesNeededToFormProduct);
 	}
 
-	private int productOf(ArrayList<Integer> valuesNeededToFormProduct) {
+	private int productOf(List<Integer> valuesNeededToFormProduct) {
 		int product = 1;
 		for(int value : valuesNeededToFormProduct) {
 			product = product * value;

@@ -1,7 +1,7 @@
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.*;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.Test;
 
@@ -13,7 +13,7 @@ public class Solution3 {
 	}
 
 	private long determineLargestPrimeFactor(long number) {
-		ArrayList<Integer> calculatedPrimesUpToWithout1 = (new Primes()).calculatePrimesUpToWithout1((int) Math.sqrt(number));
+		List<Integer> calculatedPrimesUpToWithout1 = (new Primes()).calculatePrimesUpTo((int) Math.sqrt(number));
 		for (int i = calculatedPrimesUpToWithout1.size() - 1; i > 0; i--) {
 			if(number % calculatedPrimesUpToWithout1.get(i) == 0) {
 				return calculatedPrimesUpToWithout1.get(i);
