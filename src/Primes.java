@@ -1,36 +1,43 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Primes {
-	public ArrayList<Long> calculatePrimesUpToWithout1(long number) {
-		ArrayList<Long> remainingNumbers = allOddsNumbersNotOneToWith2(number);
-		for (int i = 0; i < remainingNumbers.size(); i++) {
-			removeMultipleOf(remainingNumbers, remainingNumbers.get(i), i + 1);
+	public ArrayList<Integer> calculatePrimesUpTo(int number) {
+		boolean[] numberInclusion = booleanArrayUpTo(number);
+		for (int currentPrime = 2; currentPrime <= number; currentPrime++) {
+			if(currentPrime > Math.sqrt(number)) {
+				break;
+			}
+			sieveBasedOnPrime(numberInclusion, currentPrime);
 		}
+		return convertToIncludedValues(numberInclusion);
+	}
+
+	public ArrayList<Integer> calculatePrimesUpToWithout1(int number) {
+		ArrayList<Integer> remainingNumbers = calculatePrimesUpTo(number);
+		remainingNumbers.remove(new Integer(1));
 		return remainingNumbers;
 	}
-	
-	public ArrayList<Long> calculatePrimesUpTo(long number) {
-		ArrayList<Long> remainingNumbers = calculatePrimesUpToWithout1(number);
-		remainingNumbers.add(1L);
-		return remainingNumbers;
-	}
-	
-	private void removeMultipleOf(ArrayList<Long> remainingNumbers, long multipleOf, long startingAtIndex) {
-		for (int i = remainingNumbers.size() - 1; i >= startingAtIndex; i--) {
-			if (remainingNumbers.get(i) % multipleOf == 0) {
-				remainingNumbers.remove(i);
+
+	private ArrayList<Integer> convertToIncludedValues(boolean[] numberInclusion) {
+		ArrayList<Integer> includedValues = new ArrayList<Integer>();
+		for (int i = 0; i < numberInclusion.length; i++) {
+			if (numberInclusion[i]) {
+				includedValues.add(i + 1);
 			}
 		}
+		return includedValues;
 	}
 
-	private ArrayList<Long> allOddsNumbersNotOneToWith2(long largestNumber) {
-		ArrayList<Long> remainingNumbers = new ArrayList<Long>();
-		remainingNumbers.add(2L);
-		for (long i = 3; i <= largestNumber; i = i+2) {
-			remainingNumbers.add(i);
+	private void sieveBasedOnPrime(boolean[] numberInclusion, int currentPrime) {
+		for (int i = currentPrime * currentPrime - 1; i < numberInclusion.length; i = i + currentPrime) {
+			numberInclusion[i] = false;
 		}
-		return remainingNumbers;
 	}
 
-
+	private boolean[] booleanArrayUpTo(int largestNumber) {
+		boolean[] booleans = new boolean[largestNumber];
+		Arrays.fill(booleans, true);
+		return booleans;
+	}
 }

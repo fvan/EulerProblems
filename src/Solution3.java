@@ -7,14 +7,15 @@ import org.junit.Test;
 
 public class Solution3 {
 	public static void main(String... args) {
+		long initialMillis = System.currentTimeMillis();
 		System.out.println(new Solution3().determineLargestPrimeFactor(600851475143L));
+		System.out.println((System.currentTimeMillis() - initialMillis) /1000);
 	}
 
 	private long determineLargestPrimeFactor(long number) {
-		ArrayList<Long> calculatedPrimesUpToWithout1 = (new Primes()).calculatePrimesUpToWithout1((long) Math.sqrt(number));
+		ArrayList<Integer> calculatedPrimesUpToWithout1 = (new Primes()).calculatePrimesUpToWithout1((int) Math.sqrt(number));
 		for (int i = calculatedPrimesUpToWithout1.size() - 1; i > 0; i--) {
-			number = number % calculatedPrimesUpToWithout1.get(i);
-			if( number == 0) {
+			if(number % calculatedPrimesUpToWithout1.get(i) == 0) {
 				return calculatedPrimesUpToWithout1.get(i);
 			}
 		}

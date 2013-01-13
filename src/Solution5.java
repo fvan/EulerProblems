@@ -12,10 +12,10 @@ public class Solution5 {
 	}
 
 	private long calculateLargestValueDivisibleByAllUpTo(int largestDivisor) {
-		ArrayList<Long> valuesNeededToFormProduct = new ArrayList<Long>();
-		ArrayList<Long> usedPrimes = new Primes().calculatePrimesUpToWithout1(largestDivisor);
-		for (long prime : usedPrimes) {
-			long value = prime;
+		ArrayList<Integer> valuesNeededToFormProduct = new ArrayList<Integer>();
+		ArrayList<Integer> usedPrimes = new Primes().calculatePrimesUpToWithout1(largestDivisor);
+		for (int prime : usedPrimes) {
+			int value = prime;
 			while(value <= largestDivisor) {
 				valuesNeededToFormProduct.add(prime);
 				value = value * prime;
@@ -25,7 +25,7 @@ public class Solution5 {
 		return productOf(valuesNeededToFormProduct);
 	}
 
-	private long productOf(ArrayList<Long> valuesNeededToFormProduct) {
+	private long productOf(ArrayList<Integer> valuesNeededToFormProduct) {
 		long product = 1;
 		for(long value : valuesNeededToFormProduct) {
 			product = product * value;
