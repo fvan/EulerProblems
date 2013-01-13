@@ -13,9 +13,15 @@ public class Solution5 {
 
 	private int calculateLargestValueDivisibleByAllUpTo(int largestDivisor) {
 		ArrayList<Integer> valuesNeededToFormProduct = new ArrayList<Integer>();
-		for (int i = 2; i <= largestDivisor; i++) {
-			addValuesToBeAbleToForm(i, valuesNeededToFormProduct);
+		ArrayList<Integer> usedPrimes = new Primes().calculatePrimesUpToWithout1(largestDivisor);
+		for (int prime : usedPrimes) {
+			int value = prime;
+			while(value <= largestDivisor) {
+				valuesNeededToFormProduct.add(prime);
+				value = value * prime;
+			}
 		}
+		
 		return productOf(valuesNeededToFormProduct);
 	}
 
@@ -27,17 +33,6 @@ public class Solution5 {
 		return product;
 	}
 
-	private void addValuesToBeAbleToForm(int toForm, ArrayList<Integer> existingValues) {
-		for (int currentValues : existingValues) {
-			if(toForm % currentValues == 0) {
-				toForm = toForm / currentValues;
-			}
-		}
-		if(toForm != 1) {
-			existingValues.add(toForm);
-		}
-	}
-	
 	@Test
 	public void test_that_we_can_calculate_value_divisible_by_all_up_to_4() {
 		assertThat(new Solution5().calculateLargestValueDivisibleByAllUpTo(4), equalTo(2 * 2 * 3));
