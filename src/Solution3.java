@@ -13,7 +13,7 @@ public class Solution3 {
 	}
 
 	private long determineLargestPrimeFactor(long number) {
-		List<Integer> calculatedPrimesUpToWithout1 = (new Primes()).calculatePrimesUpTo((int) Math.sqrt(number));
+		List<Integer> calculatedPrimesUpToWithout1 = (new Primes()).calculateOrderedPrimesUpTo((int) Math.sqrt(number));
 		for (int i = calculatedPrimesUpToWithout1.size() - 1; i > 0; i--) {
 			if(number % calculatedPrimesUpToWithout1.get(i) == 0) {
 				return calculatedPrimesUpToWithout1.get(i);

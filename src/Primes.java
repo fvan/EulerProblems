@@ -3,16 +3,16 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Primes {
-	public List<Integer> calculatePrimesUpTo(int primesTo) {
-		return extendPrimeList(new ArrayList<Integer>(), 2, primesTo);
+	public List<Integer> calculateOrderedPrimesUpTo(int primesTo) {
+		return extendOrderedPrimeList(new ArrayList<Integer>(), 2, primesTo);
 	}
 
 
-	public List<Integer> extendPrimeList(List<Integer> currentPrimes, int startAt, int primesUpTo) {
+	public List<Integer> extendOrderedPrimeList(List<Integer> orderedPrimes, int startAt, int primesUpTo) {
 		int valuesBetweenStartAndEnd = 1 + primesUpTo - startAt;
 		boolean[] booleanArray = booleanArray(valuesBetweenStartAndEnd);
 		
-		for (int existingPrime : currentPrimes) {
+		for (int existingPrime : orderedPrimes) {
 			if(existingPrime > Math.sqrt(primesUpTo)) {
 				break;
 			}
@@ -39,8 +39,8 @@ public class Primes {
 		}
 		
 		List<Integer> newPrimes = convertToIncludedValuesWithOffset(booleanArray, startAt);
-		currentPrimes.addAll(newPrimes);
-		return currentPrimes;
+		orderedPrimes.addAll(newPrimes);
+		return orderedPrimes;
 	}
 	
 	private List<Integer> convertToIncludedValuesWithOffset(boolean[] inclusionIndicator, int offset) {

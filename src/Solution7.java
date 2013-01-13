@@ -9,9 +9,9 @@ public class Solution7 {
 	private Integer determineNthPrime(int nthPrime) {
 		Primes primes = new Primes();
 		int primesUpTo = nthPrime;
-		List<Integer> currentPrimes = primes.calculatePrimesUpTo(primesUpTo);
+		List<Integer> currentPrimes = primes.calculateOrderedPrimesUpTo(primesUpTo);
 		while (currentPrimes.size() < nthPrime) {
-			primes.extendPrimeList(currentPrimes, primesUpTo, primesUpTo * 2);
+			primes.extendOrderedPrimeList(currentPrimes, primesUpTo, primesUpTo * 2);
 			primesUpTo = primesUpTo * 2;
 		}
 		
@@ -29,6 +29,6 @@ public class Solution7 {
 
 	@Test
 	public void test_that_we_determine_the_10000th_prime() {
-		assertThat(determineNthPrime(10000), equalTo(new Primes().calculatePrimesUpTo(1000000).get(9999)));
+		assertThat(determineNthPrime(10000), equalTo(new Primes().calculateOrderedPrimesUpTo(1000000).get(9999)));
 	}
 }
