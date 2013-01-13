@@ -2,21 +2,18 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Primes {
-	public ArrayList<Integer> calculatePrimesUpTo(int number) {
-		boolean[] numberInclusion = booleanArrayUpTo(number);
+	public ArrayList<Integer> calculatePrimesUpToWithout1(int number) {
+		boolean[] numberInclusion = booleanArrayUpTo(number); 
+		numberInclusion[0] = false; // WARN : 0 index thus number 1
 		for (int currentPrime = 2; currentPrime <= number; currentPrime++) {
 			if(currentPrime > Math.sqrt(number)) {
 				break;
 			}
-			sieveBasedOnPrime(numberInclusion, currentPrime);
+			for (int i = currentPrime * currentPrime - 1; i < numberInclusion.length; i = i + currentPrime) {
+				numberInclusion[i] = false;
+			}
 		}
 		return convertToIncludedValues(numberInclusion);
-	}
-
-	public ArrayList<Integer> calculatePrimesUpToWithout1(int number) {
-		ArrayList<Integer> primes = calculatePrimesUpTo(number);
-		primes.remove(new Integer(1));
-		return primes;
 	}
 
 	private ArrayList<Integer> convertToIncludedValues(boolean[] inclusionIndicator) {
@@ -27,12 +24,6 @@ public class Primes {
 			}
 		}
 		return includedValues;
-	}
-
-	private void sieveBasedOnPrime(boolean[] numberInclusion, int currentPrime) {
-		for (int i = currentPrime * currentPrime - 1; i < numberInclusion.length; i = i + currentPrime) {
-			numberInclusion[i] = false;
-		}
 	}
 
 	private boolean[] booleanArrayUpTo(int largestNumber) {
