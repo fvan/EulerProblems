@@ -14,15 +14,15 @@ public class Primes {
 	}
 
 	public ArrayList<Integer> calculatePrimesUpToWithout1(int number) {
-		ArrayList<Integer> remainingNumbers = calculatePrimesUpTo(number);
-		remainingNumbers.remove(new Integer(1));
-		return remainingNumbers;
+		ArrayList<Integer> primes = calculatePrimesUpTo(number);
+		primes.remove(new Integer(1));
+		return primes;
 	}
 
-	private ArrayList<Integer> convertToIncludedValues(boolean[] numberInclusion) {
+	private ArrayList<Integer> convertToIncludedValues(boolean[] inclusionIndicator) {
 		ArrayList<Integer> includedValues = new ArrayList<Integer>();
-		for (int i = 0; i < numberInclusion.length; i++) {
-			if (numberInclusion[i]) {
+		for (int i = 0; i < inclusionIndicator.length; i++) {
+			if (inclusionIndicator[i]) {
 				includedValues.add(i + 1);
 			}
 		}
