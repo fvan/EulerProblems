@@ -38,12 +38,11 @@ public class Primes {
 			}
 		}
 		
-		List<Integer> newPrimes = convertToIncludedValuesWithOffset(booleanArray, startAt);
-		orderedPrimes.addAll(newPrimes);
+		orderedPrimes.addAll(convertToInOrderIncludeValuesWithOffset(booleanArray, startAt));
 		return orderedPrimes;
 	}
 	
-	private List<Integer> convertToIncludedValuesWithOffset(boolean[] inclusionIndicator, int offset) {
+	private List<Integer> convertToInOrderIncludeValuesWithOffset(boolean[] inclusionIndicator, int offset) {
 		ArrayList<Integer> includedValues = new ArrayList<Integer>();
 		for (int i = 0; i < inclusionIndicator.length; i++) {
 			if (inclusionIndicator[i]) {
