@@ -2,12 +2,17 @@ import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.*;
 
 import java.util.Arrays;
+import java.util.NoSuchElementException;
 
 import org.junit.Test;
 
 public class Solution4 {
 
+	// WARNING : assumed an even sized solution exist, this is not the case when digits == 1
 	private int largestEvenPalindromFromDigits(int digits) throws Exception {
+		if(digits == 1) {
+			throw new NoSuchElementException("there is no solution when digits is 1");
+		}
 		int[] palindromDigitValues = buildMaxPalindromeRepresentation(digits);
 		while (true) {
 			int proposedPalindrome = buildPalindrom(palindromDigitValues);
@@ -72,12 +77,17 @@ public class Solution4 {
 	}
 
 	@Test
-	public void test_that_we_can_determine_the_largest_palindrom_of_2_digit_numbers() throws Exception {
+	public void test_that_we_can_determine_the_largest_even_palindrom_of_2_digit_numbers() throws Exception {
 		assertThat(largestEvenPalindromFromDigits(2), equalTo(9009));
 	}
 
 	@Test
-	public void test_that_we_can_determine_the_largest_palindrom_of_3_digit_numbers() throws Exception {
+	public void test_that_we_can_determine_the_largest_even_palindrom_of_3_digit_numbers() throws Exception {
 		assertThat(largestEvenPalindromFromDigits(3), equalTo(906609));
+	}
+	
+	@Test(expected=NoSuchElementException.class)
+	public void test_that_we_can_not_determine_the_largest_even_palindrom_of_1_digit_numbers() throws Exception {
+		largestEvenPalindromFromDigits(1);
 	}
 }
