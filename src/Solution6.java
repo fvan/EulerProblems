@@ -21,10 +21,7 @@ public class Solution6 {
 
 	private int getDifferenceOfSquareOfSumAndSumOfSquare(int value) {
 		int sumUpToGiven = (value + 1) * value / 2;
-		int sumOfSquares = 0;
-		for (int i = 1; i <= value; i++) {
-			sumOfSquares += Math.pow(i, 2);
-		}
+		int sumOfSquares = (value * (value + 1) * (2 * value + 1)) / 6;
 		return (int) Math.pow(sumUpToGiven, 2) - sumOfSquares;
 	}
 }
