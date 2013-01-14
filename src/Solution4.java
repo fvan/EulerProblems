@@ -8,9 +8,10 @@ import org.junit.Test;
 
 public class Solution4 {
 
-	// WARNING : assumed an even sized solution exist, this is not the case when digits == 1
+	// WARNING : assumed an even sized solution exist, this is not the case when
+	// digits == 1
 	private int largestEvenPalindromFromDigits(int digits) throws Exception {
-		if(digits == 1) {
+		if (digits == 1) {
 			throw new NoSuchElementException("there is no solution when digits is 1");
 		}
 		int[] palindromDigitValues = buildMaxPalindromeRepresentation(digits);
@@ -70,7 +71,6 @@ public class Solution4 {
 		return proposedPalindrome % divisor == 0 && proposedPalindrome / divisor < Math.pow(10, digits) && proposedPalindrome / divisor >= minDivisor(digits);
 	}
 
-	
 	public static void main(String... args) throws Exception {
 		System.out.println(new Solution4().largestEvenPalindromFromDigits(3));
 		System.out.println("expected Answer:906609");
@@ -85,8 +85,8 @@ public class Solution4 {
 	public void test_that_we_can_determine_the_largest_even_palindrom_of_3_digit_numbers() throws Exception {
 		assertThat(largestEvenPalindromFromDigits(3), equalTo(906609));
 	}
-	
-	@Test(expected=NoSuchElementException.class)
+
+	@Test(expected = NoSuchElementException.class)
 	public void test_that_we_can_not_determine_the_largest_even_palindrom_of_1_digit_numbers() throws Exception {
 		largestEvenPalindromFromDigits(1);
 	}
