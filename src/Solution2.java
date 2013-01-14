@@ -13,7 +13,7 @@ public class Solution2 {
 		int sumOfEven = 0;
 		int valueBefore = 1;
 		int nextValue = 2;
-		
+
 		while (nextValue < smallerThan) {
 			if (nextValue % 2 == 0) {
 				sumOfEven += nextValue;
@@ -27,12 +27,12 @@ public class Solution2 {
 	}
 
 	@Test
-	public void test_that_we_can_calculate_then_values_before_3() {
+	public void test_that_we_calculate_the_even_fibonachi_sum_of_values_before_3() {
 		assertThat(calculateSumOfEvenFibonachiUpTo(3), is(2));
 	}
 
 	@Test
-	public void test_that_we_can_calculate_then_values_before_9() {
+	public void test_that_we_calculate_the_even_fibonachi_sum_of_values_before_9() {
 		assertThat(calculateSumOfEvenFibonachiUpTo(9), is(2 + 8));
 	}
 }
