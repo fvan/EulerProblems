@@ -12,9 +12,19 @@ public class Primes {
 		currentMax = 1;
 	}
 
-	public List<Integer> calculateOrderedPrimesUpTo(int primesTo) {
+	public List<Integer> calculateOrderedPrimesAtleastTo(int primesTo) {
 		extendOrderedPrimeList(primesTo);
-		return currentPrimes;
+		return new ArrayList<Integer>(currentPrimes);
+	}
+	
+	public List<Integer> getFirstPrimes(int number) {
+		int primesUpTo = number;		
+		extendOrderedPrimeList(primesUpTo);
+		while (currentPrimes.size() < number) {
+			primesUpTo = primesUpTo * 2;
+			calculateOrderedPrimesAtleastTo(primesUpTo);
+		}
+		return new ArrayList<Integer>(currentPrimes);
 	}
 
 	private void extendOrderedPrimeList(int primesUpTo) {

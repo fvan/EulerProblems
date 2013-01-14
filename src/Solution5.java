@@ -15,7 +15,7 @@ public class Solution5 {
 
 	private int calculateLargestValueDivisibleByAllUpTo(int largestDivisor) {
 		List<Integer> valuesNeededToFormProduct = new ArrayList<Integer>();
-		List<Integer> usedPrimes = new Primes().calculateOrderedPrimesUpTo(largestDivisor);
+		List<Integer> usedPrimes = new Primes().calculateOrderedPrimesAtleastTo(largestDivisor);
 		
 		for (int prime : usedPrimes) {
 			int primeToAPower = prime;
