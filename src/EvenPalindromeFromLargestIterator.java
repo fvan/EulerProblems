@@ -1,7 +1,7 @@
 import java.util.Arrays;
 import java.util.Iterator;
 
-public class EvenPalindromeFromLargestIterator implements Iterator<Integer> {
+public class EvenPalindromeFromLargestIterator implements Iterator<Integer>, Iterable<Integer> {
 
 	private int[] palindromDigitValues;
 
@@ -24,6 +24,11 @@ public class EvenPalindromeFromLargestIterator implements Iterator<Integer> {
 	@Override
 	public void remove() {
 		throw new UnsupportedOperationException();
+	}
+	
+	@Override
+	public Iterator<Integer> iterator() {
+		return this;
 	}
 	
 	private int[] buildPalindromeRepresentation(int digits) {
@@ -51,4 +56,5 @@ public class EvenPalindromeFromLargestIterator implements Iterator<Integer> {
 		}
 		return palindrome;
 	}
+
 }

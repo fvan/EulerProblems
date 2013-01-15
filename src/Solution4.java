@@ -15,12 +15,10 @@ public class Solution4 {
 			throw new NoSuchElementException("there is no even sized solution when digits is 1");
 		}
 		int[] palindromDigitValues = buildPalindromeRepresentation(digits);
-		while (true) {
-			int proposedPalindrome = buildPalindrom(palindromDigitValues);
-			if (hasProductOfDigitSize(proposedPalindrome, digits)) {
-				return proposedPalindrome;
+		for(int evenPalindrome : new EvenPalindromeFromLargestIterator(digits*2)) {
+			if (hasProductOfDigitSize(evenPalindrome, digits)) {
+				return evenPalindrome;
 			}
-			decreaseToNextPalindromRepresentation(palindromDigitValues);
 		}
 	}
 
