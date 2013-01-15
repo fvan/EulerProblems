@@ -10,16 +10,16 @@ public class Solution4 {
 
 	// WARNING : assumed an even sized solution exist, this is not the case when
 	// digits == 1
-	private int largestEvenPalindromFromDigits(int digits) throws Exception {
+	private int largestEvenPalindromFromDigits(int digits) throws NoSuchElementException {
 		if (digits == 1) {
 			throw new NoSuchElementException("there is no even sized solution when digits is 1");
 		}
-		int[] palindromDigitValues = buildPalindromeRepresentation(digits);
 		for(int evenPalindrome : new EvenPalindromeFromLargestIterator(digits*2)) {
 			if (hasProductOfDigitSize(evenPalindrome, digits)) {
 				return evenPalindrome;
 			}
 		}
+		throw new NoSuchElementException("unexpectedly no even palidrome");
 	}
 
 	private int[] buildPalindromeRepresentation(int digits) {
