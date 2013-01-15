@@ -1,7 +1,6 @@
 import static org.hamcrest.MatcherAssert.*;
 import static org.hamcrest.Matchers.*;
 
-import java.util.Arrays;
 import java.util.NoSuchElementException;
 
 import org.junit.Test;
@@ -20,32 +19,6 @@ public class Solution4 {
 			}
 		}
 		throw new NoSuchElementException("unexpectedly no even palidrome");
-	}
-
-	private int[] buildPalindromeRepresentation(int digits) {
-		int[] palindromDigitValues = new int[digits];
-		Arrays.fill(palindromDigitValues, 9);
-		return palindromDigitValues;
-	}
-
-	private void decreaseToNextPalindromRepresentation(int[] palindromDigitValue) {
-		for (int i = 0; i < palindromDigitValue.length; i++) {
-			if (palindromDigitValue[i] == 0) {
-				palindromDigitValue[i] = 9;
-			} else {
-				palindromDigitValue[i] = palindromDigitValue[i] - 1;
-				return;
-			}
-		}
-	}
-
-	private int buildPalindrom(int[] palindromDigitValue) {
-		int palindrome = 0;
-		for (int i = 0; i < palindromDigitValue.length; i++) {
-			palindrome += palindromDigitValue[i] * Math.pow(10, palindromDigitValue.length - 1 - i);
-			palindrome += palindromDigitValue[i] * Math.pow(10, palindromDigitValue.length + i);
-		}
-		return palindrome;
 	}
 
 	private boolean hasProductOfDigitSize(int proposedPalindrome, int digits) {
@@ -69,6 +42,7 @@ public class Solution4 {
 		return proposedPalindrome % divisor == 0 && proposedPalindrome / divisor < Math.pow(10, digits) && proposedPalindrome / divisor >= minDivisor(digits);
 	}
 
+	
 	public static void main(String... args) throws Exception {
 		System.out.println(new Solution4().largestEvenPalindromFromDigits(3));
 		System.out.println("expected Answer:906609");
