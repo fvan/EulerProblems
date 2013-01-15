@@ -13,6 +13,9 @@ public class Primes {
 	}
 
 	public List<Integer> calculateOrderedPrimesAtleastTo(int primesTo) {
+		if(primesTo <= currentMax) {
+			return new ArrayList<Integer>(currentPrimes);
+		}
 		extendOrderedPrimeList(primesTo);
 		return new ArrayList<Integer>(currentPrimes);
 	}

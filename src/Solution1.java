@@ -1,5 +1,5 @@
+import static org.hamcrest.MatcherAssert.*;
 import static org.hamcrest.Matchers.*;
-import static org.junit.Assert.*;
 
 import org.junit.Test;
 
@@ -21,17 +21,17 @@ public class Solution1 {
 	}
 
 	@Test 
-	public void test_that_we_can_calculate_the_sum_of_all_multiples_of_3and5_before_4() {
+	public void test_that_we_can_calculate_the_sum_of_all_multiples_of_3and5_which_includes_a_multiple_of_3() {
 		assertThat(calculateSumOfMultiplesOf3and5before(4), is(3));
 	}
 
 	@Test
-	public void test_that_we_can_calculate_the_sum_of_all_multiples_of_3and5_before_6() {
+	public void test_that_we_calculate_the_sum_of_all_multiples_of_3and5_which_includes_a_multiple_of_5() {
 		assertThat(calculateSumOfMultiplesOf3and5before(6), is(3 + 5));
 	}
 
 	@Test
-	public void test_that_we_can_calculate_the_sum_of_all_multiples_of_3and5_before_16() {
+	public void test_that_we_calculate_the_sum_of_all_multiples_of_3and5_which_includes_a_multiple_of_15() {
 		assertThat(calculateSumOfMultiplesOf3and5before(16), is(3 + 5 + 6 + 9 + 10 + 12 + 15));
 	}
 }

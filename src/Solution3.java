@@ -1,5 +1,5 @@
+import static org.hamcrest.MatcherAssert.*;
 import static org.hamcrest.Matchers.*;
-import static org.junit.Assert.*;
 
 import java.util.List;
 
@@ -22,12 +22,12 @@ public class Solution3 {
 	}
 
 	@Test
-	public void test_that_we_determine_the_largest_prime_of_7_which_is_a_prime() {
+	public void test_that_we_determine_the_largest_prime_factor_of_a_prime() {
 		assertThat(determineLargestPrimeFactor(7), equalTo(7L));
 	}
 
 	@Test
-	public void test_that_we_determine_the_largest_prime_of_18_which_is_a_composite() {
+	public void test_that_we_determine_the_largest_prime_factor_of_a_composite() {
 		assertThat(determineLargestPrimeFactor(18), equalTo(3L));
 	}
 }

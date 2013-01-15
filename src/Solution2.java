@@ -1,5 +1,5 @@
+import static org.hamcrest.MatcherAssert.*;
 import static org.hamcrest.Matchers.*;
-import static org.junit.Assert.*;
 
 import org.junit.Test;
 
@@ -27,12 +27,19 @@ public class Solution2 {
 	}
 
 	@Test
-	public void test_that_we_calculate_the_even_fibonachi_sum_of_values_before_3() {
+	public void test_that_we_calculate_the_even_fibonachi_sum_of_no_even_fibonachi() {
+		assertThat(calculateSumOfEvenFibonachiUpTo(0), is(0));
+		assertThat(calculateSumOfEvenFibonachiUpTo(1), is(0));
+		assertThat(calculateSumOfEvenFibonachiUpTo(2), is(0));
+	}
+	
+	@Test
+	public void test_that_we_calculate_the_even_fibonachi_sum_of_a_single_even_fibonachi() {
 		assertThat(calculateSumOfEvenFibonachiUpTo(3), is(2));
 	}
 
 	@Test
-	public void test_that_we_calculate_the_even_fibonachi_sum_of_values_before_9() {
+	public void test_that_we_calculate_the_even_fibonachi_sum_of_multiple_even_fibonachi() {
 		assertThat(calculateSumOfEvenFibonachiUpTo(9), is(2 + 8));
 	}
 }

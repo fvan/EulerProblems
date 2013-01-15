@@ -1,5 +1,5 @@
+import static org.hamcrest.MatcherAssert.*;
 import static org.hamcrest.Matchers.*;
-import static org.junit.Assert.*;
 
 import java.util.List;
 
@@ -25,7 +25,17 @@ public class Solution10 {
 	}
 
 	@Test
-	public void test_that_we_calculate_the_sum_of_primes_up_to_6() {
+	public void test_that_we_calculate_the_sum_of_no_primes() {
+		assertThat(new Solution10().calculateSumOfPrimesUpTo(1), equalTo(0L));
+	}
+	
+	@Test
+	public void test_that_we_calculate_the_sum_of_a_single_prime() {
+		assertThat(new Solution10().calculateSumOfPrimesUpTo(3), equalTo(2L));
+	}
+	
+	@Test
+	public void test_that_we_calculate_the_sum_of_primes() {
 		assertThat(new Solution10().calculateSumOfPrimesUpTo(6), equalTo(2L + 3 + 5));
 	}
 

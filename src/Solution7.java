@@ -1,12 +1,11 @@
+import static org.hamcrest.MatcherAssert.*;
 import static org.hamcrest.Matchers.*;
-import static org.junit.Assert.*;
 
 import org.junit.Test;
 
 public class Solution7 {
 	private Integer determineNthPrime(int nthPrime) {
 		Primes primes = new Primes();
-		
 		return primes.getFirstPrimes(nthPrime).get(nthPrime - 1);
 	}
 	
@@ -16,12 +15,12 @@ public class Solution7 {
 	}
 	
 	@Test
-	public void test_that_we_determine_the_4th_prime() {
-		assertThat(determineNthPrime(4), equalTo(7));
+	public void test_that_we_determine_the_1st_prime() {
+		assertThat(determineNthPrime(1), equalTo(2));
 	}
 
 	@Test
-	public void test_that_we_determine_the_10000th_prime() {
-		assertThat(determineNthPrime(10000), equalTo(new Primes().calculateOrderedPrimesAtleastTo(1000000).get(9999)));
+	public void test_that_we_determine_a_later_prime() {
+		assertThat(determineNthPrime(4), equalTo(7));
 	}
 }
